@@ -64,11 +64,11 @@ print('\nX = ', X)
 # print(len(X))
 # print(len(X[0]))
 
+# dictionary
+trans_lenses = {'Yes': 1, 'No': 2}
 
 #transform the original categorical training classes into numbers and add to the vector Y. For instance Yes = 1, No = 2, so Y = [1, 1, 2, 2, ...]
 for row in db:
-    # dictionary
-    trans_lenses = {'Yes': 1, 'No': 2}
     trans_row = trans_lenses[row[4]]
     Y.append(trans_row)
 
