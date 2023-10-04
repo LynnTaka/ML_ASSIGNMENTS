@@ -15,9 +15,9 @@ from sklearn.naive_bayes import GaussianNB
 import csv
 
 db = []#og
-testdb = []
-X = []
-Y = []
+testdb = [] #test set
+X = [] # training
+Y = [] #label
 
 #reading the training data in a csv file
 with open('weather_training.csv', 'r') as train_file:
@@ -61,7 +61,8 @@ with open('weather_test.csv', 'r') as test_file:
             testdb.append(row)
 
 #printing the header os the solution
-print("{:<3} {:<10} {:<12} {:<9} {:<9} {:<10} {:<10}".format("Day", "Outlook", "Temperature", "Humidity", "Wind", "PlayTennis", "Confidence"))
+#formatting
+print("{:<3} {:<10} {:<12} {:<10} {:<10} {:<10} {:<10}".format("Day", "Outlook", "Temperature", "Humidity", "Wind", "PlayTennis", "Confidence"))
 
 #use your test samples to make probabilistic predictions. For instance: clf.predict_proba([[3, 1, 2, 1]])[0]
 for row in testdb:
@@ -74,7 +75,9 @@ for row in testdb:
     pred_probability = clf.predict_proba([[outlook, temp, humid, wind]])[0]
 
     for label, value in dict_label.items():
-        pred_label = label
+        # print(pred_probability[value])
+        pred_label = label #get label
         confidence = pred_probability[value-1]
         if confidence > 0.75:
-            print("{:<3} {:<10} {:<12} {:<9} {:<9} {:<10} {:.4f}".format(day, outlook, temp, humid, wind, label, confidence))
+            print("{:<3} {:<10} {:<12} {:<10} {:<10} {:<10} {:.4f}"
+                  .format(day, row[1], row[2], row[3], row[4], label, confidence))
