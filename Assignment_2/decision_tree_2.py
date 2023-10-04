@@ -15,13 +15,14 @@
 from sklearn import tree
 import csv
 
+# datasets with diff number of instances
 dataSets = ['contact_lens_training_1.csv', 'contact_lens_training_2.csv', 'contact_lens_training_3.csv']
 
 for ds in dataSets:
 
     dbTraining = []#og
-    X = []
-    Y = []
+    X = [] # training
+    Y = [] # labels
 
     # reading the training data in a csv file
     with open(ds, 'r') as csvfile:
@@ -35,7 +36,7 @@ for ds in dataSets:
     dict_spec = {'Myope': 1, 'Hypermetrope': 2}  # row[1] spec
     dict_astig = {'Yes': 1, 'No': 2}  # row[2] astigma
     dict_tear = {'Normal': 1, 'Reduced': 2}  # row[3] tear
-    dict_lenses = {'Yes': 1, 'No': 2}  # true results
+    dict_lenses = {'Yes': 1, 'No': 2}  # labels
     accuracies = []  # list of accuracies
 
     # transform the original categorical training features to numbers and add to the 4D array X. For instance Young = 1, Prepresbyopic = 2, Presbyopic = 3
@@ -93,10 +94,11 @@ for ds in dataSets:
 
             total_pred += 1
 
+        # accuracy for round of training and testing
         accuracies.append(correct_pred/total_pred)
 
     # find the average of this model during the 10 runs (training and test set)
-    # print(len(accuracies))
+    # print(len(accuracies)) #check
     avg_accuracy = sum(accuracies) / len(accuracies)
 
     # print the average accuracy of this model during the 10 runs (training and test set).
