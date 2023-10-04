@@ -34,11 +34,10 @@ for row in db:
     for train in db:
         if row != train:
             x, y = float(train[0]), float(train[1])
-            X.append([x,y])
+            X.append([x, y])
 
     # transform the original training classes to numbers and add to the vector Y removing the instance that will be used for testing in this iteration. For instance, Y = [1, 2, ,...]. Convert each
     #  feature value to float to avoid warning messages
-    # --> add your Python code here
     for label in db:
         if row != label:
             temp = label[2]
@@ -47,8 +46,7 @@ for row in db:
             else:
                 Y.append(1)
 
-    # store the test sample of this iteration in the vector testSample
-    # --> add your Python code here
+    # store the test sample of this iteration in the vector testSample = test_sample
     test_sample = [float(row[0]), float(row[1])]
 
     # fitting the knn to the data
