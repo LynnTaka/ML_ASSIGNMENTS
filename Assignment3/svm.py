@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------
 # AUTHOR: Lynn Takahashi
 # FILENAME: svm.py
-# SPECIFICATION: description of the program
+# SPECIFICATION: see README.txt
 # FOR: CS 4210- Assignment #3
 # TIME SPENT: 1.5 hours
 #-----------------------------------------------------------*/
